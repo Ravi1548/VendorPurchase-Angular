@@ -1,0 +1,168 @@
+<div class="container">
+<body>
+      <form name="vendorform" #form = "ngForm" autocomplete="off"
+      (ngSubmit) = "onSubmit(form)">
+          
+            <!-- vendor Id  -- AutoGenerate -->
+            <input type="hidden" name="vdId" [(ngModel)]= "vendorsService.formEmpData.vdId">
+      
+            <!-- VendorName -->
+            <div class="form-group">
+                  <label>Vendor Name</label>
+                  <input name="vdName" #vdName="ngModel"[(ngModel)]= "vendorsService.formEmpData.vdName"
+                  class="form-control" placeholder="Enter Vendor Name" minlength="4" maxlength="25" required
+                  [ngClass] ="{'is-invalid': vdName.touched  && vdName.invalid}"
+                  />
+                  <div class="validation-error" *ngIf = "vdName.touched  && vdName.invalid">
+                        <div *ngIf = "vdName.errors.required" >
+                             Vendor Name should not be empty
+                        </div>
+                  </div>
+                  </div>
+<!--                
+            <!- VendorType -->
+            <div class="form-group">
+                  <label>Vendor Type</label>
+                  <input name="vdType" #vdType="ngModel"[(ngModel)]= "vendorsService.formEmpData.vdType"
+                  class="form-control" placeholder="Enter Vendor Type" minlength="2" maxlength="25" required
+                  [ngClass] ="{'is-invalid': vdType.touched  && vdType.invalid}"
+                  />
+                  <div class="validation-error" *ngIf = "vdType.touched  && vdType.invalid">
+                        <div *ngIf = "vdType.errors.required" >
+                             Vendor Type should not be empty
+                        </div>
+                  </div>
+                  </div>
+      
+                  <!-- valid From -->      
+            <div class="form-group">
+                  <label>Valid From</label>
+                  <input type="date" name="vdFrom" #vdFrom="ngModel"[(ngModel)]= "vendorsService.formEmpData.vdFrom"
+                  class="form-control" placeholder="date" minlength="4" maxlength="25" required
+                  [ngClass] ="{'is-invalid': vdFrom.touched  && vdFrom.invalid}"
+                  />
+                  <div class="validation-error" *ngIf = "vdFrom.touched  && vdFrom.invalid">
+                        <div *ngIf = "vdFrom.errors.required" >
+                             Select Date
+                        </div>
+                  </div>
+                  </div>
+
+                  <!-- valid to -->
+                  <div class="form-group">
+                        <label>Valid Upto</label>
+                        <input type="date" name="vdTo" #vdTo="ngModel"[(ngModel)]= "vendorsService.formEmpData.vdTo"
+                        class="form-control" placeholder="date" minlength="4" maxlength="25" required
+                        [ngClass] ="{'is-invalid': vdTo.touched  && vdTo.invalid}"
+                        />
+                        <div class="validation-error" *ngIf = "vdTo.touched  && vdTo.invalid">
+                              <div *ngIf = "vdTo.errors.required" >
+                                   Select Date
+                              </div>
+                        </div>
+                        </div>
+
+                        <!-- Vendor Address  -->
+                        <div class="form-group">
+                              <label>Vendor Address</label>
+                              <textarea name="vdAddr"  #vdAddr="ngModel"[(ngModel)]= "vendorsService.formEmpData.vdAddr"
+                              class="form-control" placeholder="Enter Vendor Address" minlength="5" maxlength="25" required
+                              [ngClass] ="{'is-invalid': vdAddr.touched  && vdAddr.invalid}"
+                              ></textarea>
+                              <div class="validation-error" *ngIf = "vdAddr.touched  && vdAddr.invalid">
+                                    <div *ngIf = "vdAddr.errors.required" >
+                                         Vendor Address should not be empty
+                                    </div>
+                              </div>
+                              </div>
+           
+            <!-- Salary  -->
+            <!-- <div class="form-group">
+                  <label>Salary</label>
+                  <input name="salary" #salary="ngModel"[(ngModel)]= "employeesService.formEmpData.salary"
+                  class="form-control" placeholder="Enter Salary" minlength="5" maxlength="8" required
+                  [ngClass] ="{'is-invalid': salary.touched  && salary.invalid}"
+                  />
+                  <div class="validation-error" *ngIf = "salary.touched  && salary.invalid">
+                        <div *ngIf = "salary.errors.required" >
+                            Please Enter salary
+                        </div>
+                  </div>
+                  </div> -->
+           
+            <!-- Phone No. -->
+             <div class="form-group">
+                  <label>Phone Number</label>
+                  <input name="phoneNumber" #phoneNumber="ngModel"[(ngModel)]= "vendorsService.formEmpData.phoneNumber"
+                  class="form-control" placeholder="Enter phone no." minlength="10" maxlength="10" required
+                  [ngClass] ="{'is-invalid': phoneNumber.touched  && phoneNumber.invalid}"
+                  />
+                  <div class="validation-error" *ngIf = "phoneNumber.touched  && phoneNumber.invalid">
+                        <div *ngIf = "phoneNumber.errors.required" >
+                            Please Enter Phone no.
+                        </div>
+                  </div>
+                  </div> 
+
+                    <!-- Creation Date -->
+                   <div class="form-group">
+                     <label>Creation Date</label>
+                     <input type="date" name="vdCreationDate" #vdCreationDate="ngModel"[(ngModel)]= "vendorsService.formEmpData.vdCreationDate"
+                      class="form-control" placeholder="date" minlength="4" maxlength="25" required
+                      [ngClass] ="{'is-invalid': vdCreationDate.touched  && vdCreationDate.invalid}"    />
+                        <div class="validation-error" *ngIf = "vdCreationDate.touched  && vdCreationDate.invalid">
+                      <div *ngIf = "vdCreationDate.errors.required" >
+                          Select Date
+                </div>
+            </div>
+                 </div>     
+      
+                <!-- Asset Name -->
+                <div class="form-group">
+                  <label>Asset Name</label>
+                  <select name="atId" #atId="ngModel" class="form-control" [(ngModel)]="vendorsService.formEmpData.atId"
+                  required [ngClass]="{'is-invalid': atId.touched && atId.invalid}">
+                      <option value="" selected disabled>Select Asset</option>
+                      <option *ngFor="let assett of this.vendorsService.assettype" value="{{assett.atId}}">{{assett.atName}}</option>
+                  </select>
+              </div>
+              <div class="validation-error" *ngIf="atId.touched && atId.invalid">
+                  <div *ngIf="atId.errors.required" style="color: red;">Asset  should not be empty</div>
+              </div><br>
+      
+              <!-- Active -->
+              <!-- <div class="form-group">
+                  <div class="form-check">
+                        <label class="form-check-label">Is Active</label>
+                        <input type="checkbox" name="active" id="active"
+                        #active = "ngModel"
+                        [(ngModel)] = "employeesService.formEmpData.active"
+                        class="form-check-input" required>
+                  </div>
+              </div> -->
+      
+            
+      
+            <!-- Submit Button   -->
+             
+             <div class="form-group">
+                <button type="submit" class="btn btn-primary" [disabled] ="!(form.valid && form.dirty)">
+                    Submit
+                </button>
+                &nbsp;
+                <button type="reset" class="btn btn-secondary">
+                    Reset
+                </button>
+            </div>  
+      
+      
+      
+      </form>
+</body>
+</div>
+      
+      
+      
+      
+      
+      

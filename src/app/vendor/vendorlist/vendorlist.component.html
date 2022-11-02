@@ -1,0 +1,61 @@
+<div class="container">
+      <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+              <span class="navbar-brand mb-0 h1"><h2>Vendor List</h2></span>
+            </div>
+          </nav>
+
+
+      <!-- <div class="header">
+            <div class="list-row">
+                  <input type="text" class="form-control" id="searchbar" placeholder="search here.."[(ngModel)] = "filterString"/>
+            </div>
+      </div> -->
+            <table  class="table table-dark table-hover">
+                  <thead>
+                        <tr>
+                              <th>Vendor Id</th>
+                              <th>Vendor Name </th>
+                              <th>Vendor Type</th>
+                              <th>Asset Type Id</th>
+                              <th>Valid From</th>
+                              <th>Valid Till</th>
+                              <th>Vendor Address</th>
+                              <th>Phone Number</th>
+                              <th>CreationDate</th>
+                              <th>Asset Type</th>
+                              <td><p><b>Action</b></p></td>
+                        </tr>
+                  </thead>
+                  <tbody>
+      
+                        <tr *ngFor = "let Vendorclass of this.vendorsService.vendors| paginate:{itemsPerPage:4, currentPage:page}">
+                             
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.vdId}}</td>
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.vdName}}</td>
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.vdType}}</td>
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.assettype.atId}}</td>
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.vdFrom}}</td>
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.vdTo}}</td>
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.vdAddr}}</td>
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.phoneNumber}}</td>
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.vdCreationDate}}</td>
+                              <td (click) =  "populateForm(Vendorclass)">{{Vendorclass.assettype.atName}}</td>
+                              
+                              <td>
+                                    <button class="btn btn-outline-primary" (click) =  "populateForm(Vendorclass)">Edit</button>&nbsp;
+                                    <button class="btn btn-sm btn-outline-danger" (click) = "deleteVendor(Vendorclass)">Delete</button>
+                              
+                              </td>
+                        <!-- </ng-container> -->
+                        </tr>
+                  </tbody>
+            </table>
+            <div class="footer">
+                  Pagination
+                  <pagination-controls (pageChange) = "page=($event)"></pagination-controls>
+            </div>
+      </div>
+      
+      
+      
